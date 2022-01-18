@@ -6,11 +6,11 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 13:28:04 by msebbane          #+#    #+#             */
-/*   Updated: 2021/11/19 15:05:16 by msebbane         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:10:53 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 size_t	ft_strlen(const char *str)
 {

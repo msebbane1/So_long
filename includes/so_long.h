@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:14:57 by msebbane          #+#    #+#             */
-/*   Updated: 2021/11/24 15:57:29 by msebbane         ###   ########.fr       */
+/*   Updated: 2021/12/23 13:47:26 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@
 # include <stdio.h>
 # include <mlx.h>
 # include "get_next_line.h"
+# include "struct.h"
+# include "define.h"
 
 char	*get_next_line(int fd);
-int	ft_check_map(char *path);
+int		ft_check_map(char *path);
 //int		main(int argc, char **argv);
-int		main(void);
+//int		main(int argc, char **argv);
+char	**ft_read_map(char **argv);
 
 #endif

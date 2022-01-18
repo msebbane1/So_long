@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:03:40 by msebbane          #+#    #+#             */
-/*   Updated: 2021/11/24 15:57:14 by msebbane         ###   ########.fr       */
+/*   Updated: 2021/12/23 13:48:01 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_check_map(char *path)
 	int		nbline;
 	int		total;
 	int		fd;
-
+	
 	fd = open_map(path);
 	if (fd < 0)
 		return (0);
@@ -84,9 +84,9 @@ int	ft_check_map(char *path)
 	while (str != NULL)
 	{
 		if (check_line(str, nbline, total))
-			printf("Error\n");
+			return (1);
 		str = get_next_line(fd);
 		nbline++;
 	}
-	return (1);
+	return (0);
 }

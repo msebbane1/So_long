@@ -6,11 +6,11 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 13:28:13 by msebbane          #+#    #+#             */
-/*   Updated: 2021/11/24 14:45:52 by msebbane         ###   ########.fr       */
+/*   Updated: 2021/12/23 13:53:26 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 #define BUFFER_SIZE 1
 
