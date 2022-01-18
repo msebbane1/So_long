@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2021/12/21 10:17:10 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/18 13:55:45 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_coord {
 }	t_coord;
 
 typedef struct s_item {
-	t_coord	item_pos;
+	//t_coord	item_pos;
 }	t_item;
 
 typedef struct s_keys {
@@ -58,10 +58,10 @@ typedef struct s_tex
 typedef struct s_conf {
 	char	**map;
 	int		move_count;
-	t_coord	*player_pos;
+	t_coord size;
 	//t_list	*item_list;
 	//t_list	*exit_list;
-	t_coord	screen_res;
+	//t_coord	screen_res;
 	int		cube_size;
 	void	*mlx;
 	void	*win;

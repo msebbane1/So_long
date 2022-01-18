@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 09:38:43 by msebbane          #+#    #+#             */
-/*   Updated: 2021/12/23 14:20:59 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/18 15:36:26 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,12 @@ int	key_hook(int keycode, t_vars vars)
 	return (0);
 }
 
-//int malloc_map
 
-
-
-/*int	ft_read(char **argv, t_conf *conf)
-{
-	int	fd;
-	int	line;
-
-	fd = open(argv[1], O_RDONLY);
-	line = 0;
-	//conf->map[line] = get_next_line(fd);
-	printf("%s", get_next_line(fd));
-	while (get_next_line(fd))
-	{
-		//printf("%s", get_next_line(fd));
-		conf->map[line] = get_next_line(fd);
-		line++;
-	}
-	close(fd);
-	return (0);
-}*/
 
 int	main(int argc, char **argv)
 {
 	t_conf	conf;
-	t_tex	size;
+	//t_tex	size;
 	//t_vars	vars;
 
 	if (ft_check_map("maps/map_2.ber") || argc != 2)
@@ -62,20 +41,24 @@ int	main(int argc, char **argv)
 		printf("Error\n");
 		return (1);
 	}
-	ft_read_map(argv);
-	conf.mlx = mlx_init();
-		conf.win = mlx_new_window(conf.mlx, 500, 500, "GAME");
-		conf.img.img = mlx_xpm_file_to_image(conf.mlx, "./images/Sprite/Grass.xpm", &size.width, &size.height);
-		mlx_put_image_to_window(conf.mlx, conf.win, conf.img.img, 0, 0);
+	ft_read_map(argv, &conf);
+	game_init(&conf);
+	 //Lire ma map avec argv
+	//printf("%d", conf.size.x);
+	//conf.mlx = mlx_init();
+	//conf.win = mlx_new_window(conf.mlx, conf.size.x *64, conf.size.y *64, "GAME");
+	//conf.img.img = mlx_xpm_file_to_image(conf.mlx, "./images/Sprite/Grass.xpm", &size.width, &size.height);
+	//mlx_put_image_to_window(conf.mlx, conf.win, conf.img.img, 0, 0);
 	//mlx_key_hook(mlx_win, key_hook, &vars);
-		mlx_loop(conf.mlx);
+	mlx_loop(conf.mlx);
 
 }
 
 /*
-----> mettre map.ber dans un tableau a 2 dimensions
+----> mettre map.ber dans un tableau a 2 dimensions (ft_read_map) compter les caractere d'une ligne et compter les lignes (x, y) et malloc
 ----> lire la map avec GNL et calculer la taille de ma map x et y jusqu'a un "\n"
-----> la taille * 64 (taille de l'mage)
+----> la taille * 64 (taille de l'image)
+----> Lire la map, lire chaque caracteres / afficher l'image (sprite) sur un chiffre
 ----> map.ber correspond a 0 = Background 1 = Mur C = collectible, E for map exit and P = player
 ----> Deplacer le player mlx_key_hook
 ----> supprimer avec mlx_destroy
