@@ -6,13 +6,13 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 09:38:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/18 15:36:26 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:37:53 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	key_hook(int keycode, t_vars vars)
+/*int	key_hook(int keycode, t_vars vars)
 {
 	void	*img;
 	int		img_width;
@@ -26,32 +26,25 @@ int	key_hook(int keycode, t_vars vars)
 		mlx_put_image_to_window(vars.mlx, vars.win, img, 0, 0);
 	}
 	return (0);
-}
-
+}*/
 
 
 int	main(int argc, char **argv)
 {
 	t_conf	conf;
-	//t_tex	size;
-	//t_vars	vars;
 
-	if (ft_check_map("maps/map_2.ber") || argc != 2)
-	{
-		printf("Error\n");
-		return (1);
-	}
+	//if (ft_check_map("maps/map_2.ber") || argc != 2)
+	//{
+		//printf("Error\n");
+		//return (1);
+	//}
+	printf("%d", argc);
+	read_x_y(argv, &conf);
 	ft_read_map(argv, &conf);
 	game_init(&conf);
-	 //Lire ma map avec argv
-	//printf("%d", conf.size.x);
-	//conf.mlx = mlx_init();
-	//conf.win = mlx_new_window(conf.mlx, conf.size.x *64, conf.size.y *64, "GAME");
-	//conf.img.img = mlx_xpm_file_to_image(conf.mlx, "./images/Sprite/Grass.xpm", &size.width, &size.height);
-	//mlx_put_image_to_window(conf.mlx, conf.win, conf.img.img, 0, 0);
+	open_images(conf);
 	//mlx_key_hook(mlx_win, key_hook, &vars);
 	mlx_loop(conf.mlx);
-
 }
 
 /*

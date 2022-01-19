@@ -3,89 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bleroy <bleroy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 13:28:04 by msebbane          #+#    #+#             */
-/*   Updated: 2021/11/24 16:10:53 by msebbane         ###   ########.fr       */
+/*   Created: 2021/11/10 10:23:48 by bleroy            #+#    #+#             */
+/*   Updated: 2021/12/20 13:13:31 by bleroy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+char	*gnl_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
+	int		i;
+	int		len_1;
+	int		len_2;
+	char	*str;
 
-	i = 0;
-	while (str[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size_max)
-{
-	size_t	i;
-	size_t	size_src;
-
-	i = 0;
-	size_src = ft_strlen(src);
-	if (!dst || !src)
-		return (0);
-	if (size_max == 0)
-		return (size_src);
-	while (src[i] && i < (size_max - 1))
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (size_src);
-}
-
-char	*ft_strjoin(char *str, char *buf)
-{
-	size_t	i;
-	size_t	j;
-	char	*tmp;
-
-	if (!str)
-	{
-		str = malloc(sizeof(char) * 1);
-		str[0] = '\0';
-	}
-	if (!str || !buf)
-		return (NULL);
-	tmp = malloc(sizeof(char) * ((ft_strlen(str) + ft_strlen(buf)) + 1));
-	if (!tmp)
-		return (NULL);
 	i = -1;
-	if (str)
-		while (str[++i] != '\0')
-			tmp[i] = str[i];
-	j = 0;
-	while (buf[j] != '\0')
-		tmp[i++] = buf[j++];
-	tmp[ft_strlen(str) + ft_strlen(buf)] = '\0';
-	free (str);
-	return (tmp);
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	len_1 = gnl_strlen(s1);
+	len_2 = gnl_strlen(s2);
+	str = (char *)malloc(sizeof(char) * (len_1 + len_2 + 1));
+	if (!str)
+		return (NULL);
+	while (s1[++i])
+		str[i] = s1[i];
+	i = 0;
+	while (s2[i])
+		str[len_1++] = s2[i++];
+	str[len_1] = '\0';
+	return (str);
 }
 
-char	*ft_strchr(char *s, int c)
+char	*gnl_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if ((unsigned char)*s == (unsigned char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (c == 0)
+		return ((char *)s);
+	return (NULL);
+}
+
+void	*gnl_calloc(size_t count, size_t size)
+{
+	void	*m_zero;
+
+	m_zero = malloc(count * size);
+	if (m_zero == NULL)
+		return (NULL);
+	gnl_bzero(m_zero, size * count);
+	return (m_zero);
+}
+
+void	gnl_bzero(void *s, size_t n)
+{
+	char	*dest;
+	size_t	i;
+
+	dest = (char *)s;
+	i = 0;
+	while (i < n)
+	{
+		*dest = 0;
+		i++;
+		dest++;
+	}
+}
+
+size_t	gnl_strlen(const char *s)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
+	while (s[i] != '\0')
 		i++;
-	}
-	return (0);
+	return (i);
 }

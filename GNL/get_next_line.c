@@ -3,83 +3,111 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bleroy <bleroy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 13:28:13 by msebbane          #+#    #+#             */
-/*   Updated: 2021/12/23 13:53:26 by msebbane         ###   ########.fr       */
+/*   Created: 2021/11/10 10:23:44 by bleroy            #+#    #+#             */
+/*   Updated: 2021/12/21 09:26:00 by bleroy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
-
+#include "get_next_line.h"
 #define BUFFER_SIZE 1
 
-/**
- * Cet fonction permet de copier ma save(taille du buffer)dans une nouvelle
- * chaine qui contient toute la chaine sans le '\n' 
- * (tout ce quíl y a avant le '\n')
- **/
-char	*copy_save(char *buffer)
+char	*ft_next(char *buffer);
+char	*ft_free(char *buffer, char *buf);
+char	*read_file(int fd, char *res);
+char	*ft_line(char *buffer);
+
+char	*get_next_line(int fd, char **line)
+{
+	static char	*buffer;
+
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+		return (NULL);
+	buffer = read_file(fd, buffer);
+	if (!buffer)
+		return (NULL);
+	*line = ft_line(buffer);
+	buffer = ft_next(buffer);
+	return (*line);
+}
+
+char	*ft_free(char *buffer, char *buf)
+{
+	char	*temp;
+
+	temp = gnl_strjoin(buffer, buf);
+	free(buffer);
+	return (temp);
+}
+
+char	*ft_next(char *buffer)
 {
 	int		i;
+	int		j;
 	char	*line;
 
 	i = 0;
-	if (!buffer[i])
-		return (NULL);
-	while (buffer[i] != '\n' && buffer[i] != '\0')
-		i++;
-	line = malloc(sizeof(char) * (i + 2));
-	if (!line)
-		return (NULL);
-	ft_strlcpy(line, buffer, i + 2);
-	return (line);
-}
-
-char	*copy_after_line(char *buffer)
-{
-	int		i;
-	char	*line2;
-
-	i = 0;
-	while (buffer[i] != '\n' && buffer[i] != '\0')
+	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (!buffer[i])
 	{
 		free(buffer);
 		return (NULL);
 	}
-	line2 = malloc(sizeof(char) + (ft_strlen(buffer) - i + 1));
-	if (!line2)
-		return (NULL);
-	ft_strlcpy(line2, buffer + i + 1, ft_strlen(buffer));
+	line = gnl_calloc((sizeof(char)), gnl_strlen(buffer) - i + 1);
+	i++;
+	j = 0;
+	while (buffer[i])
+		line[j++] = buffer[i++];
 	free(buffer);
-	return (line2);
+	return (line);
 }
 
-char	*get_next_line(int fd)
+char	*ft_line(char *buffer)
 {
-	int				ret;
-	int				i;
-	char			buffer[BUFFER_SIZE + 1];
-	char			*line;
-	static char		*save;
+	char	*line;
+	int		i;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
 	i = 0;
-	while (i < BUFFER_SIZE)
-		buffer[i++] = '\0';
-	ret = 1;
-	while (ft_strchr(save, '\n') == NULL && ret != 0)
+	if (!buffer[i])
+		return (NULL);
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	line = gnl_calloc(i + 2, sizeof(char));
+	i = 0;
+	while (buffer[i] && buffer[i] != '\n')
 	{
-		ret = read(fd, buffer, BUFFER_SIZE);
-		if (ret == -1)
-			return (NULL);
-		buffer[ret] = '\0';
-		save = ft_strjoin(save, buffer);
+		line[i] = buffer[i];
+		i++;
 	}
-	line = copy_save(save);
-	save = copy_after_line(save);
+	if (buffer[i] && buffer[i] == '\n')
+		line[i++] = '\n';
 	return (line);
+}
+
+char	*read_file(int fd, char *res)
+{
+	char	*buffer;
+	int		byte_read;
+
+	if (!res)
+		res = gnl_calloc(1, 1);
+	buffer = gnl_calloc(sizeof(char), BUFFER_SIZE + 1);
+	byte_read = 1;
+	while (byte_read > 0)
+	{
+		byte_read = read(fd, buffer, BUFFER_SIZE);
+		if (byte_read == -1)
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[byte_read] = 0;
+		res = ft_free(res, buffer);
+		if (gnl_strchr(buffer, '\n'))
+			break ;
+	}
+	free(buffer);
+	return (res);
 }

@@ -6,30 +6,43 @@
 #    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/01/18 15:24:25 by msebbane         ###   ########.fr        #
+#    Updated: 2022/01/19 16:37:04 by msebbane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC=gcc
-CFLAGS= -Wall -Wextra -Werror -g -fsanitize=address
-NAME= solong
-SRCS =  srcs/main.c srcs/parsing.c GNL/get_next_line.c \
-GNL/get_next_line_utils.c srcs/read_map.c srcs/game_init.c srcs/open_images.c
+SRCS = GNL/get_next_line_utils.c \
+	   GNL/get_next_line.c \
+	   srcs/main.c srcs/open_images.c\
+srcs/read_map.c srcs/game_init.c \
+srcs/read_x_y.c
+
 OBJS = ${SRCS:.c=.o}
-LFLAGS = -lmlx -framework OpenGL -framework AppKit
+
+NAME = solong
+
+CC = cc
+ 
+CFLAGS = -Wall -Wextra -Werror
+
+FLAGSMLX = -lmlx -framework OpenGL -framework AppKit -lz
+
+RM = rm -f
 
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	${MAKE} -C ./libft
-	${CC} ${CFLAGS} ${OBJS} ${LFLAGS} ./libft/libft.a -o ${NAME}
+		$(CC) $(OBJS) $(FLAGSMLX) $(CFLAGS) -o $(NAME)
+
+%o:	%.c
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+
+clean :
+		${RM} ${OBJS}
 
 fclean: clean
-	${MAKE} fclean -C ./libft
-	rm -f ${NAME}
+		${RM} ${NAME}
+		${RM} *.out
+		
+re: fclean all
 
-clean:
-	${MAKE} clean -C ./libft
-	rm -f ${NAME} ${OBJS}
-
-re: fclean clean all
+.PHONY: all clean fclean re
