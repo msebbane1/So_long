@@ -6,15 +6,17 @@
 #    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/01/21 12:14:03 by msebbane         ###   ########.fr        #
+#    Updated: 2022/01/21 16:15:15 by msebbane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = GNL/get_next_line_utils.c \
 	   GNL/get_next_line.c \
 	   srcs/main.c srcs/open_images.c\
-srcs/read_map.c srcs/game_init.c \
-srcs/read_x_y.c srcs/check_map.c srcs/error_msg.c
+		srcs/read_map.c srcs/game_init.c \
+		srcs/read_x_y.c srcs/check_map.c srcs/error_msg.c \
+		srcs/key_hook.c srcs/player_coord.c \
+		srcs/move_player.c srcs/counter_steps.c \
 
 OBJS = ${SRCS:.c=.o}
 
