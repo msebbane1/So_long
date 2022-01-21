@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/19 14:03:37 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/20 11:04:35 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ typedef struct s_tex
 
 typedef struct s_conf {
 	t_map	map;
-	int		move_count;
+	//int		move_count;
 	//t_coord size;
 	//t_list	*item_list;
 	//t_list	*exit_list;
 	//t_coord	screen_res;
-	int		cube_size;
+	//int		cube_size;
 	void	*mlx;
 	void	*win;
 	t_data	img;

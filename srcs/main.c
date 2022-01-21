@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 09:38:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/19 16:37:53 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/21 12:06:51 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,11 @@ int	main(int argc, char **argv)
 {
 	t_conf	conf;
 
-	//if (ft_check_map("maps/map_2.ber") || argc != 2)
-	//{
-		//printf("Error\n");
-		//return (1);
-	//}
-	printf("%d", argc);
+	if (argc != 2)
+		error_msg("error, too many arguments");
 	read_x_y(argv, &conf);
 	ft_read_map(argv, &conf);
+	ft_check_map(&conf);
 	game_init(&conf);
 	open_images(conf);
 	//mlx_key_hook(mlx_win, key_hook, &vars);
@@ -53,6 +50,9 @@ int	main(int argc, char **argv)
 ----> la taille * 64 (taille de l'image)
 ----> Lire la map, lire chaque caracteres / afficher l'image (sprite) sur un chiffre
 ----> map.ber correspond a 0 = Background 1 = Mur C = collectible, E for map exit and P = player
+----> Faire les msg d'erreur
+----> faire la gestion d' erreur
+----> 
 ----> Deplacer le player mlx_key_hook
 ----> supprimer avec mlx_destroy
 */

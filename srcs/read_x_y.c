@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:07:34 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/19 17:07:12 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/20 11:12:48 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ int	read_x_y(char **argv, t_conf *conf)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		return (0);
-	//conf->map.size.x = (len(fd) * 64);
-	//conf->map.size.y = (lines(fd, conf->map.size.x, 64) * 64);
 	conf->map.size.x = (count_lines_x(fd) * 16);
 	conf->map.size.y = (count_lines_y(fd) * 16);
 	close(fd);

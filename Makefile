@@ -6,7 +6,7 @@
 #    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/01/19 16:37:04 by msebbane         ###   ########.fr        #
+#    Updated: 2022/01/21 12:14:03 by msebbane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRCS = GNL/get_next_line_utils.c \
 	   GNL/get_next_line.c \
 	   srcs/main.c srcs/open_images.c\
 srcs/read_map.c srcs/game_init.c \
-srcs/read_x_y.c
+srcs/read_x_y.c srcs/check_map.c srcs/error_msg.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -22,7 +22,7 @@ NAME = solong
 
 CC = cc
  
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 FLAGSMLX = -lmlx -framework OpenGL -framework AppKit -lz
 

@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 14:22:23 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/19 17:03:13 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/20 11:00:14 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	put_images(t_conf conf, int line, int c)
 		conf.img.img = mlx_xpm_file_to_image(conf.mlx, "./images/Sprite/Grass.xpm",
 				&conf.img.pos.x, &conf.img.pos.y);
 	mlx_put_image_to_window(conf.mlx, conf.win, conf.img.img, 16 * c, 16 * line);
-	//mlx_destroy_image(conf.mlx, conf.img.img);
+	mlx_destroy_image(conf.mlx, conf.img.img);
 	return (0);
 }
 
