@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 13:38:41 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/21 16:29:38 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/25 15:53:47 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,42 +16,54 @@
 // prendre en compte les pas du joueur //conf->player.steps++ printf("Steps : %d\n", conf->player.steps);
 
 
-int	key_down(t_conf *conf)
+int	key_player_win(int keycode, t_conf *conf)
 {
-	conf->map.ptr[conf->player.pos_y][conf->player.pos_x] = '0';
-	conf->player.pos_y += 1;
-	conf->map.ptr[conf->player.pos_y][conf->player.pos_x] = 'P';
-	conf->player.counter++;
+	int	pos_x;
+	int	pos_y;
+
+	pos_x = conf->player.pos_x;
+	pos_y = conf->player.pos_y;
+	if (keycode == D && conf->map.ptr[pos_y][pos_x + 1] == 'E')
+		return (1);
+	if (keycode == W && conf->map.ptr[pos_y - 1][pos_x] == 'E')
+		return (1);
+	if (keycode == A && conf->map.ptr[pos_y][pos_x - 1] == 'E')
+		return (1);
+	if (keycode == S && conf->map.ptr[pos_y + 1][pos_x] == 'E')
+		return (1);
 	return (0);
 }
 
-int	key_left(t_conf *conf)
+int	key_move_player(int keycode, t_conf *conf)
 {
-	conf->map.ptr[conf->player.pos_y][conf->player.pos_x] = '0';
-	conf->player.pos_x -= 1;
-	conf->map.ptr[conf->player.pos_y][conf->player.pos_x] = 'P';
-	conf->player.counter++;
+	int	pos_x;
+	int	pos_y;
+
+	pos_x = conf->player.pos_x;
+	pos_y = conf->player.pos_y;
+	if (keycode == ESCAPE)
+	{
+		mlx_destroy_window(conf->mlx, conf->win);
+		exit (0);
+	}
+	if (key_player_win(keycode, conf))
+		end_game(conf);
+	else if ((keycode == D) && (conf->map.ptr[pos_y][pos_x + 1] != '1')
+		&& (conf->map.ptr[pos_y][pos_x + 1] != 'E'))
+		key_right(conf);
+	else if (keycode == W && conf->map.ptr[pos_y - 1][pos_x] != '1'
+		&& conf->map.ptr[pos_y - 1][pos_x] != 'E')
+		key_up(conf);
+	else if (keycode == A && conf->map.ptr[pos_y][pos_x - 1] != '1'
+		&& conf->map.ptr[pos_y][pos_x - 1] != 'E')
+		key_left(conf);
+	else if (keycode == S && conf->map.ptr[pos_y + 1][pos_x] != '1'
+		&& conf->map.ptr[pos_y + 1][pos_x] != 'E')
+		key_down(conf);
 	return (0);
 }
 
-int	key_up(t_conf *conf)
-{
-	conf->map.ptr[conf->player.pos_y][conf->player.pos_x] = '0';
-	conf->player.pos_y -= 1;
-	conf->map.ptr[conf->player.pos_y][conf->player.pos_x] = 'P';
-	conf->player.counter++;
-	return (0);
-}
-
-int	key_right(t_conf *conf)
-{
-	conf->map.ptr[conf->player.pos_y][conf->player.pos_x] = '0';
-	conf->player.pos_x += 1;
-	conf->map.ptr[conf->player.pos_y][conf->player.pos_x] = 'P';
-	conf->player.counter++;
-	return (0);
-}
-
+/*
 int	key_move_player(int keycode, t_conf *conf)
 {
 	int	pos_x;
@@ -65,15 +77,25 @@ int	key_move_player(int keycode, t_conf *conf)
 		mlx_destroy_window(conf->mlx, conf->win);
 		exit (0);
 	}
-	else if (keycode == D && conf->map.ptr[pos_y][pos_x + 1] != '1')
+	if (keycode == D && conf->map.ptr[pos_y][pos_x + 1] != '1' && conf->map.ptr[pos_y][pos_x + 1] != 'E')
+	{
+		if (key_player_win(keycode, conf))
+		{
+			end_game(conf);
+		}
 		key_right(conf);
-	else if (keycode == W && conf->map.ptr[pos_y - 1][pos_x] != '1')
+	}
+	if (keycode == W && conf->map.ptr[pos_y - 1][pos_x] == 'E')
+		end_game(conf);
+	else if (keycode == W && conf->map.ptr[pos_y - 1][pos_x] != '1' && conf->map.ptr[pos_y - 1][pos_x] != 'E')
 		key_up(conf);
-	else if (keycode == A && conf->map.ptr[pos_y][pos_x - 1] != '1')
+	if (keycode == A && conf->map.ptr[pos_y][pos_x - 1] == 'E')
+		end_game(conf);
+	else if (keycode == A && conf->map.ptr[pos_y][pos_x - 1] != '1' && conf->map.ptr[pos_y][pos_x - 1] != 'E')
 		key_left(conf);
-	else if (keycode == S && conf->map.ptr[pos_y + 1][pos_x] != '1')
+	if (keycode == S && conf->map.ptr[pos_y + 1][pos_x] == 'E')
+		end_game(conf);
+	else if (keycode == S && conf->map.ptr[pos_y + 1][pos_x] != '1' && conf->map.ptr[pos_y + 1][pos_x] != 'E')
 		key_down(conf);
 	return (0);
-}
-
-//=&& (base->map.ptr[base->game.p_y][base->game.p_x + 1] != '1'))
+}*/

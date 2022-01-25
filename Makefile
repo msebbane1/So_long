@@ -6,7 +6,7 @@
 #    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/01/21 16:15:15 by msebbane         ###   ########.fr        #
+#    Updated: 2022/01/25 15:40:32 by msebbane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ SRCS = GNL/get_next_line_utils.c \
 		srcs/read_x_y.c srcs/check_map.c srcs/error_msg.c \
 		srcs/key_hook.c srcs/player_coord.c \
 		srcs/move_player.c srcs/counter_steps.c \
+		srcs/count_collectible.c srcs/put_images.c \
+		srcs/key_code.c
 
 OBJS = ${SRCS:.c=.o}
 

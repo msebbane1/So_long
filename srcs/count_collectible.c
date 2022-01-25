@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hook.c                                         :+:      :+:    :+:   */
+/*   count_collectible.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 12:35:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/25 16:04:51 by msebbane         ###   ########.fr       */
+/*   Created: 2022/01/25 10:36:24 by msebbane          #+#    #+#             */
+/*   Updated: 2022/01/25 11:50:08 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	key_hook(int keycode, t_conf *conf)
+int	count_collectible(t_conf *conf)
 {
-	key_move_player(keycode, conf);
-	open_images(*conf, keycode);
-	counter_steps(conf);
-	return (0);
-}
+	int	x;
+	int	y;
 
-int	end_game(t_conf *conf)
-{
-	if (count_collectible(conf) == 0)
+	y = 0;
+	conf->player.coin = 0;
+	while (y < conf->map.size.y / 16)
 	{
-		mlx_destroy_window(conf->mlx, conf->win);
-		printf("\033[0;32m" "Congrats you win !\n" "\033[0m");
-		exit (0);
+		x = 0;
+		while (x < conf->map.size.x / 16)
+		{
+			if (conf->map.ptr[y][x] == 'C')
+				conf->player.coin++;
+			x++;
+		}
+		y++;
 	}
-	return (0);
+	return (conf->player.coin);
 }

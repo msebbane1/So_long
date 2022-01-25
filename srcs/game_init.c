@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 15:02:56 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/20 11:22:14 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:10:58 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	game_init(t_conf *conf)
 {
+	int	keycode;
+
+	keycode = 0;
 	conf->mlx = mlx_init();
 	conf->win = mlx_new_window(conf->mlx, conf->map.size.x, conf->map.size.y, "GAME");
-	open_images(*conf);
+	open_images(*conf, keycode);
 }

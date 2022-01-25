@@ -6,12 +6,11 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 09:38:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/21 16:59:39 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/25 15:17:05 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
 
 int	main(int argc, char **argv)
 {
@@ -24,11 +23,10 @@ int	main(int argc, char **argv)
 	read_x_y(argv, &conf);
 	ft_read_map(argv, &conf);
 	ft_check_map(&conf);
+	count_collectible(&conf);
 	game_init(&conf);
 	player_coord(&conf);
 	mlx_hook(conf.win, 2, 1L << 0, key_hook, &conf);
-	//mlx_string_put(conf.mlx, conf.win, 50, 50, 0x00000000, "YOU WIN");
-	//end_game(&conf);
 	mlx_loop(conf.mlx);
 }
 
