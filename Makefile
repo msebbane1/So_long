@@ -6,7 +6,7 @@
 #    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/01/26 14:23:45 by msebbane         ###   ########.fr        #
+#    Updated: 2022/01/26 17:22:13 by msebbane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = gcc
 
 OBJECTS	= ./bin
  
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 FLAGSMLX = -lmlx -framework OpenGL -framework AppKit -lz
 
@@ -27,7 +27,7 @@ SRCS = GNL/get_next_line_utils.c \
 		srcs/read_map.c srcs/game_init.c \
 		srcs/read_x_y.c srcs/check_map.c srcs/error_msg.c \
 		srcs/key_hook.c srcs/player_coord.c \
-		srcs/move_player.c \
+		srcs/move_player.c srcs/lib.c\
 		srcs/count_collectible.c srcs/put_images.c \
 		srcs/key_code.c
 
@@ -38,7 +38,7 @@ SRCS_BONUS = GNL/get_next_line_utils.c \
 		srcs_bonus/read_x_y.c srcs_bonus/check_map.c \
 		srcs_bonus/error_msg.c srcs_bonus/counter_steps.c\
 		srcs_bonus/key_hook.c srcs_bonus/player_coord.c \
-		srcs_bonus/move_player.c \
+		srcs_bonus/move_player.c srcs_bonus/lib.c\
 		srcs_bonus/count_collectible.c srcs_bonus/put_images.c \
 		srcs_bonus/key_code.c \
 

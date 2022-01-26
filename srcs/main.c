@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 09:38:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 12:38:57 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/26 17:02:54 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	main(int argc, char **argv)
 		error_msg("Error, too many arguments");
 	else if (argc < 2)
 		error_msg("Error, missing a file");
+	else if (ft_strncmp(".ber", argv[1] + ft_strlen(argv[1]) - 4, 4))
+		error_msg("Error, missing a file (.ber)");
 	read_x_y(argv, &conf);
 	ft_read_map(argv, &conf);
 	ft_check_map(&conf);

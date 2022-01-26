@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 12:53:33 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 16:54:55 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/26 17:26:08 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,12 @@ char	error_msg(char *msg);
 void	game_init(t_conf *conf);
 int		open_images(t_conf	conf, int keycode);
 void	img_player2(t_conf *conf, int keycode);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		read_x_y(char **argv, t_conf *conf);
 int		count_lines_y(int fd);
+int		ft_strlen(const char *s);
+char	*ft_itoa(int n);
+int		ft_len_nb(long n);
 int		count_lines_x(int fd);
 int		main(int argc, char **argv);
 int		ft_read_map(char **argv, t_conf *conf);
