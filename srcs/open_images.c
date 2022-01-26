@@ -6,19 +6,13 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 14:22:23 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/25 16:05:42 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/26 12:49:59 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	img_win(t_conf *conf)
-{
-	if (count_collectible(conf) == 0)
-		mlx_string_put(conf->mlx, conf->win, 50, 50, 0x00000000, "YOU WIN !");
-}
-
-int	put_images(t_conf conf, int line, int c, int keycode)
+int	put_images(t_conf conf, int line, int c)
 {
 	if (conf.map.ptr[line][c] == '0')
 		img_background(&conf);
@@ -29,26 +23,25 @@ int	put_images(t_conf conf, int line, int c, int keycode)
 	else if (conf.map.ptr[line][c] == 'C')
 		img_collectible(&conf);
 	else if (conf.map.ptr[line][c] == 'P')
-		img_player(&conf, keycode);
-	img_win(&conf);
+		img_player(&conf);
 	mlx_put_image_to_window(conf.mlx, conf.win, conf.img.img,
-		16 * c, 16 * line);
+		64 * c, 64 * line);
 	mlx_destroy_image(conf.mlx, conf.img.img);
 	return (0);
 }
 
-int	open_images(t_conf conf, int keycode)
+int	open_images(t_conf conf)
 {
 	int		line;
 	int		c;
 
 	line = 0;
-	while (line < conf.map.size.y / 16)
+	while (line < conf.map.size.y / 64)
 	{
 		c = 0;
-		while (c < conf.map.size.x / 16)
+		while (c < conf.map.size.x / 64)
 		{
-			put_images(conf, line, c, keycode);
+			put_images(conf, line, c);
 			c++;
 		}
 		line++;

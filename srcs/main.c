@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 09:38:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/25 15:17:05 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/26 12:38:57 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 	game_init(&conf);
 	player_coord(&conf);
 	mlx_hook(conf.win, 2, 1L << 0, key_hook, &conf);
+	mlx_hook(conf.win, 17, 1L << 0, win_closed, &conf);
 	mlx_loop(conf.mlx);
 }
 
@@ -42,4 +43,6 @@ int	main(int argc, char **argv)
 ----> Connaitre la position de P du player
 ----> Regle du jeu collect toute les pieces pour exit // compter les pieces
 ----> supprimer avec mlx_destroy
+----> gerer si il y a pas de P, lettres reourner une erreur
+----> S pour enemies
 */

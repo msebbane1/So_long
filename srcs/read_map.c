@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 09:53:33 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/19 17:06:02 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/26 12:42:00 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,6 @@ int	count_lines_y(char **argv)
 
 int	malloc_map(t_conf *conf)
 {
-	//int		total_lines;
-
-	//printf("%d", conf->size.x);
-	//total_lines = count_lines_y(argv);
-	//if (conf->map.size.y <= 0)
-		//return (0);
-	//conf->map.ptr = malloc(sizeof(char *) * total_lines + 1);
 	conf->map.ptr = malloc((conf->map.size.y + 1) * sizeof(char *));
 	if (!conf->map.ptr)
 		return (0);
