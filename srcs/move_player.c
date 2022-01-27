@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 13:38:41 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 12:23:22 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 07:05:53 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,7 @@ int	key_move_player(int keycode, t_conf *conf)
 	pos_x = conf->player.pos_x;
 	pos_y = conf->player.pos_y;
 	if (keycode == ESCAPE)
-	{
-		mlx_destroy_window(conf->mlx, conf->win);
-		exit (0);
-	}
+		win_closed(conf);
 	if (key_player_win(keycode, conf))
 		end_game(conf);
 	else if ((keycode == D) && (conf->map.ptr[pos_y][pos_x + 1] != '1')

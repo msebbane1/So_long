@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 13:22:17 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 17:38:22 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 13:43:41 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,17 @@ void	img_collectible(t_conf *conf)
 	static int	c = 0;
 
 	if (c % 2)
-	conf->img.img = mlx_xpm_file_to_image(conf->mlx,
+	{
+		conf->img.img = mlx_xpm_file_to_image(conf->mlx,
 				"./images/Sprite/key.xpm",
 				&conf->img.pos.x, &conf->img.pos.y);
+	}
 	else
+	{
 		conf->img.img = mlx_xpm_file_to_image(conf->mlx,
 				"./images/Sprite/key2.xpm",
 				&conf->img.pos.x, &conf->img.pos.y);
+	}
 	c++;
 }
 

@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:03:40 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 15:48:02 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 13:55:11 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	check_double(t_conf *conf)
 	y = 0;
 	end_line = conf->map.size.y / 64;
 	end_char = conf->map.size.x / 64;
+	count_collectible(conf);
 	while (y < end_line)
 	{
 		x = 0;
@@ -35,7 +36,7 @@ int	check_double(t_conf *conf)
 		}
 		y++;
 	}
-	if (c != 2)
+	if (c != 2 || conf->player.coin == 0)
 		return (1);
 	return (0);
 }
@@ -60,6 +61,33 @@ int	check_char(t_conf *conf)
 				&& conf->map.ptr[y][x] != 'C')
 				return (1);
 			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+
+int	check_rectangular(t_conf *conf)
+{
+	//ft_strlen(conf->map.ptr[y]) ---> calcul chaque ligne de y et compte le x avec le '\n'
+	int	end_line_x;
+	int	end_line_y;
+	int	y;
+
+	y = 0;
+	end_line_x = conf->map.size.x / 64;
+	end_line_y = conf->map.size.y / 64;
+	while (conf->map.ptr[y])
+	{
+		//printf("%d   %d   %d    %d\n", y, (conf->map.size.y / 64) - 1, ft_strlen(conf->map.ptr[y]), end_line_x);
+		if ((y == (end_line_y) - 1 && ft_strlen(conf->map.ptr[y]) == end_line_x))
+			return (0);
+		if (ft_strlen(conf->map.ptr[y]) - 1 != end_line_x)
+		{
+			//printf("%d\n", ft_strlen(conf->map.ptr[y]));
+			//printf("%d\n", end_line_x);
+			return (1);
 		}
 		y++;
 	}
@@ -95,11 +123,13 @@ int	check_walls(t_conf *conf)
 
 int	ft_check_map(t_conf *conf)
 {
-	if (check_walls(conf))
-		error_msg("Error invalid walls");
+	if (check_rectangular(conf))
+		error_msg("Error, map must be rectangular");
+	else if (check_walls(conf))
+		error_msg("Error, invalid walls");
 	else if (check_char(conf))
-		error_msg("Error invalid characters");
+		error_msg("Error, invalid characters");
 	else if (check_double(conf))
-		error_msg("Error too much characters");
+		error_msg("Error, too much player/exit or missing key");
 	return (0);
 }

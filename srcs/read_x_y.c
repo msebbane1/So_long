@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:07:34 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 10:43:41 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 12:18:48 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	count_lines_x(int fd)
 	int		lines;
 	int		ret;
 	char	c;
-		
+
 	lines = 0;
 	ret = 1;
 	while (ret == 1 && c != '\n')
@@ -33,16 +33,18 @@ int	count_lines_y(int fd)
 	int		lines;
 	int		ret;
 	char	c;
+	int		i;
 
 	lines = 1;
 	ret = 1;
-	while (ret != 0)
+	i = 0;
+	while (ret == 1)
 	{
-		ret = read(fd, &c, 1); // lis le fichier lettre par lettre
-		if (c == '\n') // jusqu'a la 2eme ligne 
-			lines++; // compte toute les lignes
+		ret = read(fd, &c, 1);
+		if (c == '\n')
+			lines++;
 	}
-	return (lines + 1); // lines = au nombre total de mes lignes
+	return (lines + 1);
 }
 
 
@@ -52,7 +54,7 @@ int	read_x_y(char **argv, t_conf *conf)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		return (0);
+		error_msg("Error, invalid file");
 	conf->map.size.x = (count_lines_x(fd) * 64);
 	conf->map.size.y = (count_lines_y(fd) * 64);
 	close(fd);

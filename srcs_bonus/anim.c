@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_images.c                                      :+:      :+:    :+:   */
+/*   anim.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 14:22:23 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/27 13:13:03 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 13:25:03 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,7 @@ void	img_ennemy(t_conf *conf)
 
 int	put_images(t_conf conf, int line, int c, int keycode)
 {
-	if (conf.map.ptr[line][c] == '0')
-		img_background(&conf);
-	else if (conf.map.ptr[line][c] == '1')
-		img_walls(&conf);
-	else if (conf.map.ptr[line][c] == 'E')
+	if (conf.map.ptr[line][c] == 'E')
 		img_exit(&conf);
 	else if (conf.map.ptr[line][c] == 'C')
 		img_collectible(&conf);

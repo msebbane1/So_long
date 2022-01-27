@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:03:28 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 17:06:03 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 12:11:21 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-int	ft_strlen(const char *s)
+int	ft_strlen(char *s)
 {
 	size_t	i;
 

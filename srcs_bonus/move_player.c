@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 13:38:41 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 15:46:33 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 12:13:57 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,3 @@ int	key_move_player(int keycode, t_conf *conf)
 		key_down(conf);
 	return (0);
 }
-

@@ -6,13 +6,13 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:03:28 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 17:04:15 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 08:55:50 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	ft_strlen(const char *s)
+int	ft_strlen(char *s)
 {
 	size_t	i;
 

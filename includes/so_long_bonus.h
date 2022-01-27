@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 12:53:33 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 17:26:08 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 12:22:35 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	img_player2(t_conf *conf, int keycode);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		read_x_y(char **argv, t_conf *conf);
 int		count_lines_y(int fd);
-int		ft_strlen(const char *s);
+int		ft_strlen(char *s);
 char	*ft_itoa(int n);
 int		ft_len_nb(long n);
 int		count_lines_x(int fd);

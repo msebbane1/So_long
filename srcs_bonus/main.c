@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 09:38:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 17:32:52 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 12:12:06 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main(int argc, char **argv)
 	ft_read_map(argv, &conf);
 	ft_check_map(&conf);
 	count_collectible(&conf);
-	player_coord(&conf);
 	game_init(&conf);
+	player_coord(&conf);
 	mlx_hook(conf.win, 2, 1L << 0, key_hook, &conf);
 	mlx_hook(conf.win, 17, 1L << 0, win_closed, &conf);
 	mlx_loop(conf.mlx);

@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 12:35:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 17:36:51 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 13:28:04 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 int	key_hook(int keycode, t_conf *conf)
 {
-	key_move_player(keycode, conf);
-	open_images(*conf, keycode);
-	counter_steps(conf);
+	if (keycode == D || keycode == S || keycode == A || keycode == W
+		|| keycode == ESCAPE)
+	{
+		key_move_player(keycode, conf);
+		open_images(*conf, keycode);
+		counter_steps(conf);
+	}
 	return (0);
 }
 
