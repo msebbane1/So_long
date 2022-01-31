@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:03:40 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/31 13:48:38 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/31 14:35:35 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	check_char(t_conf *conf)
 		{
 			if (conf->map.ptr[y][x] != '0' && conf->map.ptr[y][x] != '1'
 				&& conf->map.ptr[y][x] != 'P' && conf->map.ptr[y][x] != 'E'
-				&& conf->map.ptr[y][x] != 'C')
+				&& conf->map.ptr[y][x] != 'C' && conf->map.ptr[y][x] != 'S')
 				return (1);
 			x++;
 		}
