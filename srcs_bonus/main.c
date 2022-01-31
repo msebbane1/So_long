@@ -32,19 +32,3 @@ int	main(int argc, char **argv)
 	mlx_hook(conf.win, 17, 1L << 0, win_closed, &conf);
 	mlx_loop(conf.mlx);
 }
-
-/*
-----> mettre map.ber dans un tableau a 2 dimensions (ft_read_map) compter les caractere d'une ligne et compter les lignes (x, y) et malloc
-----> lire la map avec GNL et calculer la taille de ma map x et y jusqu'a un "\n"
-----> la taille * 64 (taille de l'image)
-----> Lire la map, lire chaque caracteres / afficher l'image (sprite) sur un chiffre
-----> map.ber correspond a 0 = Background 1 = Mur C = collectible, E for map exit and P = player
-----> Faire les msg d'erreur
-----> faire la gestion d' erreur
-----> Deplacer le player mlx_key_hook, prendre les coordoner du P
-----> Connaitre la position de P du player
-----> Regle du jeu collect toute les pieces pour exit // compter les pieces
-----> supprimer avec mlx_destroy
-----> gerer si il y a pas de P, lettres reourner une erreur
-----> S pour enemies
-*/

@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:03:40 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/27 13:55:11 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/31 13:45:43 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,8 @@ int	check_char(t_conf *conf)
 	return (0);
 }
 
-
 int	check_rectangular(t_conf *conf)
 {
-	//ft_strlen(conf->map.ptr[y]) ---> calcul chaque ligne de y et compte le x avec le '\n'
 	int	end_line_x;
 	int	end_line_y;
 	int	y;
@@ -80,15 +78,14 @@ int	check_rectangular(t_conf *conf)
 	end_line_y = conf->map.size.y / 64;
 	while (conf->map.ptr[y])
 	{
-		//printf("%d   %d   %d    %d\n", y, (conf->map.size.y / 64) - 1, ft_strlen(conf->map.ptr[y]), end_line_x);
-		if ((y == (end_line_y) - 1 && ft_strlen(conf->map.ptr[y]) == end_line_x))
-			return (0);
-		if (ft_strlen(conf->map.ptr[y]) - 1 != end_line_x)
+		if (y < end_line_y - 1)
 		{
-			//printf("%d\n", ft_strlen(conf->map.ptr[y]));
-			//printf("%d\n", end_line_x);
-			return (1);
+			if (ft_strlen(conf->map.ptr[y]) != end_line_x + 1)
+				return (1);
 		}
+		else
+			if (ft_strlen(conf->map.ptr[y]) != end_line_x)
+				return (1);
 		y++;
 	}
 	return (0);
@@ -105,7 +102,7 @@ int	check_walls(t_conf *conf)
 	{
 		if (conf->map.ptr[y][x] != '1')
 			return (1);
-		else if (conf->map.ptr[conf->map.size.y / 64 - 1][x] != '1')
+		if (conf->map.ptr[conf->map.size.y / 64 - 1][x] != '1')
 			return (1);
 		x++;
 	}

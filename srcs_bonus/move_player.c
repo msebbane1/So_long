@@ -6,15 +6,11 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 13:38:41 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/27 12:13:57 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 14:22:46 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
-// P deviens '0'vide et quand il prend +1 il redeviens P
-//P prend +1 a chaque fois qu'il va vers la droite, changer la position + 1
-// prendre en compte les pas du joueur //conf->player.steps++ printf("Steps : %d\n", conf->player.steps);
-
 
 int	key_player_lose(int keycode, t_conf *conf)
 {

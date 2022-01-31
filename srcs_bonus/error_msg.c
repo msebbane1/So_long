@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 11:41:28 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/26 14:54:10 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/27 14:21:57 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,3 @@ char	error_msg(char *msg)
 	exit (0);
 	return (0);
 }
-
-/*
-char	win_msg(char *msg)
-{
-	
-}*/
