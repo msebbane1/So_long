@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 09:54:31 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/25 15:23:44 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:44:31 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_player
 
 typedef struct s_data {
 	void	*img;
+	void	*img2;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;

@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:03:40 by msebbane          #+#    #+#             */
-/*   Updated: 2022/01/31 13:45:43 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/02/01 10:46:17 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,12 @@ int	check_walls(t_conf *conf)
 int	ft_check_map(t_conf *conf)
 {
 	if (check_rectangular(conf))
-		error_msg("Error, map must be rectangular");
+		error_msg("Error\nMap must be rectangular");
 	else if (check_walls(conf))
-		error_msg("Error, invalid walls");
+		error_msg("Error\nInvalid walls");
 	else if (check_char(conf))
-		error_msg("Error, invalid characters");
+		error_msg("Error\nInvalid characters");
 	else if (check_double(conf))
-		error_msg("Error, too much player/exit or missing key");
+		error_msg("Error\nToo much player/exit or missing key");
 	return (0);
 }

@@ -6,18 +6,18 @@
 #    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/01/31 13:26:45 by msebbane         ###   ########.fr        #
+#    Updated: 2022/02/01 11:05:27 by msebbane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = solong
+NAME = so_long
 
 CC = gcc
 
 OBJECTS	= ./bin
  
-CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 FLAGSMLX = -lmlx -framework OpenGL -framework AppKit -lz
 
