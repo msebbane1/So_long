@@ -6,7 +6,7 @@
 #    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/02/01 11:05:27 by msebbane         ###   ########.fr        #
+#    Updated: 2022/02/01 11:37:30 by msebbane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,14 +33,14 @@ SRCS = GNL/get_next_line_utils.c \
 
 SRCS_BONUS = GNL/get_next_line_utils.c \
 	   	GNL/get_next_line.c \
-	   	srcs_bonus/main.c srcs_bonus/open_images.c\
-		srcs_bonus/read_map.c srcs_bonus/game_init.c \
-		srcs_bonus/read_x_y.c srcs_bonus/check_map.c \
-		srcs_bonus/error_msg.c srcs_bonus/counter_steps.c\
-		srcs_bonus/key_hook.c srcs_bonus/player_coord.c \
-		srcs_bonus/move_player.c srcs_bonus/lib.c\
-		srcs_bonus/count_collectible.c srcs_bonus/put_images.c \
-		srcs_bonus/key_code.c \
+	   	srcs_bonus/main_bonus.c srcs_bonus/open_images_bonus.c\
+		srcs_bonus/read_map_bonus.c srcs_bonus/game_init_bonus.c \
+		srcs_bonus/read_x_y_bonus.c srcs_bonus/check_map_bonus.c \
+		srcs_bonus/error_msg_bonus.c srcs_bonus/counter_steps_bonus.c\
+		srcs_bonus/key_hook_bonus.c srcs_bonus/player_coord_bonus.c \
+		srcs_bonus/move_player_bonus.c srcs_bonus/lib_bonus.c\
+		srcs_bonus/count_collectible_bonus.c srcs_bonus/put_images_bonus.c \
+		srcs_bonus/key_code_bonus.c \
 
 RM = rm -f
 
